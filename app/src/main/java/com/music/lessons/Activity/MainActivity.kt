@@ -1,4 +1,4 @@
-package com.music.lessons
+package com.music.lessons.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <Toolbar
         android:background="@color/black"
@@ -19,7 +19,7 @@
        <TextView
             android:id="@+id/name"
             android:textSize="26dp"
-            android:text="Уроки v 1.0"
+            android:text="Уроки v 2.0"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

@@ -10,4 +10,10 @@
     <color name="btnAdd">#009688</color>
     <color name="LL1">#F1F1CA</color>
     <color name="transparent">#34000000</color>
+    <color name="border_color">#000000</color>
+    <color name="background_color">#FAE7AE</color>
+    <color name="backgroundFrame">#FFFFFF</color>
+    <color name="LLOn">#95C397</color>
+    <color name="LLOff">#C6A296</color>
+
 </resources>

@@ -1,0 +1,39 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/all_students"
+        android:title="Все ученики"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/monday"
+        android:title="Понедельник"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tuesday"
+        android:title="Вторник"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/wednesday"
+        android:title="Среда"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/thursday"
+        android:title="Четверг"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/friday"
+        android:title="Пятница"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/saturday"
+        android:title="Суббота"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sunday"
+        android:title="Воскресенье"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/statistics"
+        android:title="Статистика"
+        app:showAsAction="never" />
+</menu>
