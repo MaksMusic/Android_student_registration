@@ -88,7 +88,7 @@ class InfoStudent : AppCompatActivity() {
             var name = binding.editTextName.text.toString() ?: ""
             var price = binding.editTextPrice.text.toString() ?: ""
             var timeLesson = planning() ?: ""
-            var countLesson = 0
+            var countLesson = binding.editCountLesson.text.toString()
 
 
             var student = Student(
@@ -97,7 +97,7 @@ class InfoStudent : AppCompatActivity() {
                 name = name,
                 price = price,
                 timeLessons = timeLesson,
-                countLessons = countLesson,
+                countLessons = countLesson.toInt(),
                 number = 1
             )
 

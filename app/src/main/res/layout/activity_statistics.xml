@@ -41,7 +41,7 @@
             android:id="@+id/allStudentsCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Всего студентов: 0"
+            android:text="Студентов on "
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -49,21 +49,41 @@
             android:id="@+id/activeStudentsCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Активных студентов: 0"
-            android:textSize="18sp" />
+            android:layout_marginTop="5dp"
+            android:text="Всего студентов: "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dayRevenueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+
+            android:text="Доход за сегодня: "
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/weeklyRevenueTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Доход за неделю: 0"
-            android:textSize="18sp" />
+            android:layout_marginTop="5dp"
+            android:text="Доход за неделю: "
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/saveToJsonButton"
             android:layout_width="wrap_content"
+            android:layout_marginTop="55dp"
             android:layout_height="wrap_content"
             android:text="Сохранить в JSON" />
+
+
+        <Button
+            android:id="@+id/importoJsonButton"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:text="Импортировать  JSON" />
 
     </LinearLayout>
 

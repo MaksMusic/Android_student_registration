@@ -2,6 +2,7 @@ package com.music.lessons.AdapterStudent
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 
 @Entity(tableName = "student")
@@ -11,8 +12,8 @@ data class Student (
     var on:Boolean,
     var price:String,
     var number:Int,
-    var countLessons:Int,
-    var timeLessons:String,
+    @SerializedName("count_lessons")var countLessons:Int,
+    @SerializedName("time_lessons") var timeLessons:String,
 
     )
 
