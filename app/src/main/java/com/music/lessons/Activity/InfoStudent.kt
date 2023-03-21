@@ -1,5 +1,6 @@
 package com.music.lessons.Activity
 
+import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -38,8 +39,99 @@ class InfoStudent : AppCompatActivity() {
         initText()
         red()
         delite()
+        timeView()
 
     }
+
+    private fun timeView(){
+        binding.day1TimeEdittext.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val timePickerDialog = TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    binding.day1TimeEdittext.setText(time)
+                }, hour, minute, true)
+            timePickerDialog.show()
+        }
+
+        binding.day2TimeEdittext.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val timePickerDialog = TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    binding.day2TimeEdittext.setText(time)
+                }, hour, minute, true)
+            timePickerDialog.show()
+        }
+
+
+        binding.day3TimeEdittext.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val timePickerDialog = TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    binding.day3TimeEdittext.setText(time)
+                }, hour, minute, true)
+            timePickerDialog.show()
+        }
+
+        binding.day4TimeEdittext.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val timePickerDialog = TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    binding.day4TimeEdittext.setText(time)
+                }, hour, minute, true)
+            timePickerDialog.show()
+        }
+
+        binding.day5TimeEdittext.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val timePickerDialog = TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    binding.day5TimeEdittext.setText(time)
+                }, hour, minute, true)
+            timePickerDialog.show()
+        }
+
+        binding.day6TimeEdittext.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val timePickerDialog = TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    binding.day6TimeEdittext.setText(time)
+                }, hour, minute, true)
+            timePickerDialog.show()
+        }
+
+        binding.day7TimeEdittext.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val timePickerDialog = TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    binding.day7TimeEdittext.setText(time)
+                }, hour, minute, true)
+            timePickerDialog.show()
+        }
+
+
+    }
+
 
     private fun delite() {
         binding.btnDelete.setOnClickListener {

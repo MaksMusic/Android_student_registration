@@ -96,7 +96,7 @@ class StudentsActivity : AppCompatActivity(), AdapterStudent.OnClicItem {
             var intent1 = Intent(this@StudentsActivity, InfoStudent::class.java)
             intent1.putExtra("id", id)
             startActivity(intent1)
-            finish()
+           // finish()
 
 
         }

@@ -120,8 +120,7 @@
                 <EditText
                     android:layout_marginStart="10dp"
                     android:maxLines="1"
-                    android:inputType="datetime"
-                    android:digits="0123456789:."
+
                     android:id="@+id/day1_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -144,8 +143,7 @@
                 <EditText
                     android:layout_marginStart="10dp"
                     android:maxLines="1"
-                    android:inputType="datetime"
-                    android:digits="0123456789:."
+
                     android:id="@+id/day2_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -167,8 +165,6 @@
                 <EditText
                     android:layout_marginStart="10dp"
                     android:maxLines="1"
-                    android:inputType="datetime"
-                    android:digits="0123456789:."
                     android:id="@+id/day3_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,8 +186,6 @@
                 <EditText
                     android:layout_marginStart="10dp"
                     android:maxLines="1"
-                    android:inputType="datetime"
-                    android:digits="0123456789:."
                     android:id="@+id/day4_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -213,8 +207,6 @@
                 <EditText
                     android:layout_marginStart="10dp"
                     android:maxLines="1"
-                    android:inputType="datetime"
-                    android:digits="0123456789:."
                     android:id="@+id/day5_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -236,8 +228,6 @@
                 <EditText
                     android:layout_marginStart="10dp"
                     android:maxLines="1"
-                    android:inputType="datetime"
-                    android:digits="0123456789:."
                     android:id="@+id/day6_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -259,8 +249,6 @@
                 <EditText
                     android:layout_marginStart="10dp"
                     android:maxLines="1"
-                    android:inputType="datetime"
-                    android:digits="0123456789:."
                     android:id="@+id/day7_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
