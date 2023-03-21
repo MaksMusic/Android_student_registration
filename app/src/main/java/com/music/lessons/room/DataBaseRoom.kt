@@ -10,24 +10,4 @@ abstract class DataBaseRoom : RoomDatabase() {
 
     abstract fun studentDao(): StudentDao
 
-//    companion object {
-//        @Volatile
-//        private var INSTANCE: DataBaseRoom? = null
-//
-//        fun getInstance(context: Context): DataBaseRoom {
-//            val tempInstance = INSTANCE
-//            if (tempInstance != null) {
-//                return tempInstance
-//            }
-//            synchronized(this) {
-//                val instance = Room.databaseBuilder(
-//                    context.applicationContext,
-//                    DataBaseRoom::class.java,
-//                    "my_database"
-//                ).build()
-//                INSTANCE = instance
-//                return instance
-//            }
-//        }
-//    }
 }
