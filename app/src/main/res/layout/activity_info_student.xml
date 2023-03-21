@@ -5,6 +5,7 @@
 
     <LinearLayout
         android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -118,6 +119,9 @@
 
                 <EditText
                     android:layout_marginStart="10dp"
+                    android:maxLines="1"
+                    android:inputType="datetime"
+                    android:digits="0123456789:."
                     android:id="@+id/day1_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,6 +143,9 @@
 
                 <EditText
                     android:layout_marginStart="10dp"
+                    android:maxLines="1"
+                    android:inputType="datetime"
+                    android:digits="0123456789:."
                     android:id="@+id/day2_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -159,6 +166,9 @@
 
                 <EditText
                     android:layout_marginStart="10dp"
+                    android:maxLines="1"
+                    android:inputType="datetime"
+                    android:digits="0123456789:."
                     android:id="@+id/day3_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -179,6 +189,9 @@
 
                 <EditText
                     android:layout_marginStart="10dp"
+                    android:maxLines="1"
+                    android:inputType="datetime"
+                    android:digits="0123456789:."
                     android:id="@+id/day4_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -199,6 +212,9 @@
 
                 <EditText
                     android:layout_marginStart="10dp"
+                    android:maxLines="1"
+                    android:inputType="datetime"
+                    android:digits="0123456789:."
                     android:id="@+id/day5_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -219,6 +235,9 @@
 
                 <EditText
                     android:layout_marginStart="10dp"
+                    android:maxLines="1"
+                    android:inputType="datetime"
+                    android:digits="0123456789:."
                     android:id="@+id/day6_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -239,6 +258,9 @@
 
                 <EditText
                     android:layout_marginStart="10dp"
+                    android:maxLines="1"
+                    android:inputType="datetime"
+                    android:digits="0123456789:."
                     android:id="@+id/day7_time_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -282,21 +304,19 @@
         </LinearLayout>
 
 
-        <TextView
-            android:layout_marginTop="20dp"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Состояние занятий" />
+
 
         <Switch
             android:text="Ученик активен"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="5dp"
+            android:textSize="17sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/switch_on"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="8dp"
             android:id="@+id/btnRed"
             android:textColor="@color/black"
             android:text="редактировать"

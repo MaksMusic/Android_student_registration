@@ -97,7 +97,13 @@ class InfoStudent : AppCompatActivity() {
                 name = name,
                 price = price,
                 timeLessons = timeLesson,
-                countLessons = countLesson.toInt(),
+                countLessons = if(countLesson.isEmpty()){
+                    0
+                }else{
+                    Log.e("replase",countLesson.toString())
+                    countLesson.replace(Regex("[^\\d]"), "").toInt() ?: 0
+
+                },
                 number = 1
             )
 

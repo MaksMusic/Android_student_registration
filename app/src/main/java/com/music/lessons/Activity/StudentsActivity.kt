@@ -50,7 +50,7 @@ class StudentsActivity : AppCompatActivity(), AdapterStudent.OnClicItem {
             R.id.all_students -> {
                 var sortAllList = listPassRoom.sortedByDescending { it.on }
                 var arraListSortMonday = ArrayList<Student>(sortAllList)
-                adapterStudents.setData(arraListSortMonday)
+                adapterStudents.sortStudents(arraListSortMonday)
                 setDayToolBar("список",sortAllList.size)
                 true
             }

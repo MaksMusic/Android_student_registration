@@ -1,18 +1,25 @@
 package com.music.lessons.AdapterStudent
 
 import android.annotation.SuppressLint
+import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.music.lessons.R
 import com.music.lessons.databinding.ItemStudentBinding
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AdapterStudent(var studentList: ArrayList<Student>, var clickListener: OnClicItem) :
     RecyclerView.Adapter<AdapterStudent.ViewHolder>() {
-
+    private var green:Boolean = false
 
     @SuppressLint("NotifyDataSetChanged")
     fun setAddItem(student: Student) {
@@ -22,12 +29,15 @@ class AdapterStudent(var studentList: ArrayList<Student>, var clickListener: OnC
 
     fun sortStudents(sortList: ArrayList<Student>){
         studentList = sortList
+        green = false
         notifyDataSetChanged()
 
     }
 
+    //
     fun setData(sortList:ArrayList<Student>){
         studentList = sortList;
+        green = true
         notifyDataSetChanged()
     }
 
@@ -54,6 +64,11 @@ class AdapterStudent(var studentList: ArrayList<Student>, var clickListener: OnC
 
             if (student.on) itemStudentBinding.LL.setBackgroundResource(R.drawable.border)
             if (!student.on) itemStudentBinding.LL.setBackgroundResource(R.drawable.borderoff)
+
+            if (findAndCompareTimeWithCalendar(student.timeLessons.uppercase(),getCurrentDayOfWeek()) && green==true){
+                itemStudentBinding.LL.setBackgroundResource(R.drawable.border_green)
+            }
+
 
             itemView.setOnClickListener() {
                 clickListener.clicItem(student.id.toLong() ?: 1)
@@ -83,4 +98,47 @@ class AdapterStudent(var studentList: ArrayList<Student>, var clickListener: OnC
     override fun getItemCount(): Int {
         return studentList.size
     }
+
+    private fun getCurrentDayOfWeek(): String {
+        val calendar = Calendar.getInstance()
+        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+
+        val dayNames = arrayOf("ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ")
+
+        return dayNames[dayOfWeek - 1]
+    }
+
+
+
+
+    fun findAndCompareTimeWithCalendar(timeLessons: String, date: String): Boolean {
+
+        val timeLessons = timeLessons.split(",")
+        val regex = Regex("(?<=$date[.:])(\\d+)(?=,)")
+
+        for (lesson in timeLessons) {
+            if (lesson.contains(date)){
+                val currentTime =
+                    "${Calendar.getInstance().get(Calendar.HOUR_OF_DAY)}${Calendar.getInstance().get(Calendar.MINUTE)}".toInt()
+
+                val time = lesson.replace(Regex("[^\\d]"), "")
+
+                return time.toInt() < currentTime
+            }
+
+        }
+        return false
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+

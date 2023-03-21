@@ -103,6 +103,7 @@ class StatisticsActivity : AppCompatActivity() {
         for (student in listPassRoom) {
             if (student.timeLessons.uppercase().contains(getCurrentDayOfWeek())) {
                 if (!student.price.isBlank()) {
+                    if(student.on)
                     sum += student.price.toDouble()
                 }
 
@@ -116,7 +117,7 @@ class StatisticsActivity : AppCompatActivity() {
         var sum = 0.0;
         for (student in listPassRoom) {
             if (!student.price.isBlank()) {
-
+                if(student.on)
                 sum += student.price.toDouble()
             }
         }
