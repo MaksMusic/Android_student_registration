@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.music.lessons.R
 import com.music.lessons.databinding.ItemStudentBinding
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
@@ -117,17 +118,29 @@ class AdapterStudent(var studentList: ArrayList<Student>, var clickListener: OnC
         val regex = Regex("(?<=$date[.:])(\\d+)(?=,)")
 
         for (lesson in timeLessons) {
-            if (lesson.contains(date)){
-                val currentTime =
-                    "${Calendar.getInstance().get(Calendar.HOUR_OF_DAY)}${Calendar.getInstance().get(Calendar.MINUTE)}".toInt()
+            if (lesson.contains(date) && date == getCurrentDayOfWeek()){
+                val currentTime =getCurrentTimeFormatted().toInt()
+                    //"${Calendar.getInstance().get(Calendar.HOUR_OF_DAY)}${Calendar.getInstance().get(Calendar.MINUTE)}".toInt()
 
-                val time = lesson.replace(Regex("[^\\d]"), "")
+                var time = lesson.replace(Regex("[^\\d]"), "")
+                if (time.isBlank()) time = "0" else time = time
 
+                Log.e("TIME1",time.toString())
+                Log.e("TIME2",currentTime.toString())
                 return time.toInt() < currentTime
             }
 
         }
         return false
+    }
+
+
+
+    fun getCurrentTimeFormatted() : String {
+        val currentTime = Calendar.getInstance()
+        val hours = currentTime.get(Calendar.HOUR_OF_DAY)
+        val minutes = currentTime.get(Calendar.MINUTE)
+        return String.format("%02d%02d", hours, minutes)
     }
 }
 
