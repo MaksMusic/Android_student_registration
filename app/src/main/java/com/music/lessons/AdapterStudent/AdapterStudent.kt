@@ -53,6 +53,7 @@ class AdapterStudent(var studentList: ArrayList<Student>, var clickListener: OnC
         fun addStudent(student: Student) {
             itemStudentBinding.nameStudent.text = student.name ?: ""
             itemStudentBinding.timeLessons.text = student.timeLessons ?: ""
+
             itemStudentBinding.price.text = student.price ?: ""
             itemStudentBinding.number.text = student.name ?: ""
 
