@@ -70,6 +70,14 @@
             android:text="Доход за неделю: "
             android:textSize="24sp" />
 
+        <TextView
+            android:id="@+id/TextViewPaidLesson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Баланс уроков: "
+            android:textSize="24sp" />
+
         <Button
             android:id="@+id/saveToJsonButton"
             android:layout_width="wrap_content"

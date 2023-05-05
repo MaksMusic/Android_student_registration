@@ -1,20 +1,16 @@
 package com.music.lessons.Activity
 
-import android.annotation.SuppressLint
+
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.view.MenuItem
 import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
-import com.music.lessons.AdapterStudent.AdapterStudent
 import com.music.lessons.AdapterStudent.Student
 import com.music.lessons.databinding.ActivityStatisticsBinding
-import com.music.lessons.databinding.ActivityStudentsBinding
 import com.music.lessons.room.App
 import com.music.lessons.room.StudentDao
 import kotlinx.coroutines.Dispatchers
@@ -63,7 +59,7 @@ class StatisticsActivity : AppCompatActivity() {
                 )
                 binding.dayRevenueTextView.setText("${binding.dayRevenueTextView.text} ${incomePerDay()}")
                 binding.weeklyRevenueTextView.setText("${binding.weeklyRevenueTextView.text} ${incomePerWeek()}")
-
+                binding.TextViewPaidLesson.let{it.setText("${it.text} ${incomePairLesson()}") }
 
             }
         }
@@ -103,8 +99,8 @@ class StatisticsActivity : AppCompatActivity() {
         for (student in listPassRoom) {
             if (student.timeLessons.uppercase().contains(getCurrentDayOfWeek())) {
                 if (!student.price.isBlank()) {
-                    if(student.on)
-                    sum += student.price.toDouble()
+                    if (student.on)
+                        sum += student.price.toDouble()
                 }
 
             }
@@ -113,12 +109,23 @@ class StatisticsActivity : AppCompatActivity() {
     }
 
 
+    private fun incomePairLesson(): Int {
+        var sum = 0;
+        for (student in listPassRoom) {
+            if (!student.price.isBlank()) {
+                if (student.countLessons > 0)
+                    sum += student.price.toInt() * student.countLessons
+            }
+        }
+        return sum.toInt()
+    }
+
     private fun incomePerWeek(): Int {
         var sum = 0.0;
         for (student in listPassRoom) {
             if (!student.price.isBlank()) {
-                if(student.on)
-                sum += student.price.toDouble()
+                if (student.on)
+                    sum += student.price.toDouble()
             }
         }
         return sum.toInt()

@@ -5,7 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.music.lessons.AdapterStudent.Student
 
-@Database(entities = [Student::class], version = 2)
+@Database(entities = [Student::class], version = 1)
 abstract class DataBaseRoom : RoomDatabase() {
 
     abstract fun studentDao(): StudentDao
