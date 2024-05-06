@@ -19,7 +19,7 @@
        <TextView
             android:id="@+id/name"
             android:textSize="26dp"
-            android:text="Уроки v 5.1"
+            android:text="записи"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -52,7 +52,7 @@
             android:layout_marginTop="50dp"
             android:id="@+id/BtnTicer"
             android:textSize="20sp"
-            android:text="Учитель"
+            android:text="мастер"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
         />
@@ -61,7 +61,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:id="@+id/BtnStudent"
-            android:text="Ученик"
+            android:text="клиент"
             android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -13,4 +13,6 @@ data class Student(
     val price: Double,
     val isActive: Boolean,
     val dateTime: LocalDateTime // Добавляем поле для хранения даты и времени
+
 )
+

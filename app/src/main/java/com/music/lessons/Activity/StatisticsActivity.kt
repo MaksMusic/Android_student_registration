@@ -84,7 +84,7 @@ class StatisticsActivity : AppCompatActivity() {
 //        when (item.itemId) {
 //            android.R.id.home -> {
 //                // Закрываем текущее Activity и переходим на другое
-//                val intent = Intent(this, StudentsActivity::class.java)
+//                val intent = Intent(this, com.music.lessons.Activity.StudentsActivity::class.java)
 //                startActivity(intent)
 //                finish()
 //                return true
