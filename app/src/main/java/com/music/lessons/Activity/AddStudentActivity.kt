@@ -1,187 +1,105 @@
-package com.music.lessons.Activity
-
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.lifecycleScope
-import com.music.lessons.AdapterStudent.Student
-import com.music.lessons.databinding.ActivityAddStudentBinding
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.music.lessons.room.App
+import com.music.lessons.AdapterStudent.Student
 import com.music.lessons.room.StudentDao
+import com.music.lessons.databinding.ActivityAddStudentBinding
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.util.*
 
 class AddStudentActivity : AppCompatActivity() {
-    lateinit var binding: ActivityAddStudentBinding
+
+    private lateinit var binding: ActivityAddStudentBinding
     private lateinit var studentDao: StudentDao
+    private var selectedDateTime: LocalDateTime? = null // Переменная для хранения выбранной даты и времени
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        studentDao = (application as App).getDataBase().studentDao()
 
-        init()
+        // Получаем экземпляр базы данных
+        val app = application as App
+        studentDao = app.getDataBase().studentDao()
 
-        add()
-        timeView()
-
-
-
-    }
-    private fun timeView(){
-        binding.day1TimeEdittext.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-            val timePickerDialog = TimePickerDialog(this,
-                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    binding.day1TimeEdittext.setText(time)
-                }, hour, minute, true)
-            timePickerDialog.show()
+        // Обработчик нажатия на кнопку "Добавить"
+        binding.btnAdd.setOnClickListener {
+            addStudentToDatabase()
         }
 
-        binding.day2TimeEdittext.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-            val timePickerDialog = TimePickerDialog(this,
-                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    binding.day2TimeEdittext.setText(time)
-                }, hour, minute, true)
-            timePickerDialog.show()
-        }
-
-
-        binding.day3TimeEdittext.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-            val timePickerDialog = TimePickerDialog(this,
-                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    binding.day3TimeEdittext.setText(time)
-                }, hour, minute, true)
-            timePickerDialog.show()
-        }
-
-        binding.day4TimeEdittext.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-            val timePickerDialog = TimePickerDialog(this,
-                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    binding.day4TimeEdittext.setText(time)
-                }, hour, minute, true)
-            timePickerDialog.show()
-        }
-
-        binding.day5TimeEdittext.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-            val timePickerDialog = TimePickerDialog(this,
-                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    binding.day5TimeEdittext.setText(time)
-                }, hour, minute, true)
-            timePickerDialog.show()
-        }
-
-        binding.day6TimeEdittext.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-            val timePickerDialog = TimePickerDialog(this,
-                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    binding.day6TimeEdittext.setText(time)
-                }, hour, minute, true)
-            timePickerDialog.show()
-        }
-
-        binding.day7TimeEdittext.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-            val timePickerDialog = TimePickerDialog(this,
-                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                    val time = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    binding.day7TimeEdittext.setText(time)
-                }, hour, minute, true)
-            timePickerDialog.show()
-        }
-
-
-    }
-
-
-    private fun init() {
-        lifecycleScope.launch(Dispatchers.IO) {
-
-
+        // Обработчик нажатия на кнопку "Выбрать дату и время"
+        binding.buttonSelectDateTime.setOnClickListener {
+            showDateTimePicker()
         }
     }
 
+    // Метод для отображения диалога выбора даты и времени
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun showDateTimePicker() {
+        val currentDateTime = LocalDateTime.now()
+        val year = currentDateTime.year
+        val month = currentDateTime.monthValue - 1 // Month is 0-based in DatePickerDialog
+        val day = currentDateTime.dayOfMonth
 
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                val calendar = Calendar.getInstance()
+                calendar.set(year, month, dayOfMonth)
 
-    fun planning(): String {
-        var str = ""
-        if (binding.day1Checkbox.isChecked) str += "пн " + binding.day1TimeEdittext.text + " , "
-        if (binding.day2Checkbox.isChecked) str += "вт " + binding.day2TimeEdittext.text + " , "
-        if (binding.day3Checkbox.isChecked) str += "ср " + binding.day3TimeEdittext.text + " , "
-        if (binding.day4Checkbox.isChecked) str += "чт " + binding.day4TimeEdittext.text + " , "
-        if (binding.day5Checkbox.isChecked) str += "пт " + binding.day5TimeEdittext.text + " , "
-        if (binding.day6Checkbox.isChecked) str += "сб " + binding.day6TimeEdittext.text + " , "
-        if (binding.day7Checkbox.isChecked) str += "вс " + binding.day7TimeEdittext.text + " , "
-        return str;
+                val initialHour = currentDateTime.hour
+                val initialMinute = currentDateTime.minute
+
+                val timePickerDialog = TimePickerDialog(
+                    this,
+                    { _, hourOfDay, minute ->
+                        selectedDateTime = LocalDateTime.of(year, month + 1, dayOfMonth, hourOfDay, minute)
+                        binding.textViewSelectedDateTime.text = selectedDateTime.toString() // Отображаем выбранную дату и время
+                    },
+                    initialHour,
+                    initialMinute,
+                    true
+                )
+
+                timePickerDialog.show()
+            },
+            year,
+            month,
+            day
+        )
+
+        datePickerDialog.datePicker.minDate = currentDateTime.toEpochSecond(ZoneOffset.UTC) * 1000 // Устанавливаем минимальную дату выбора (текущая дата)
+        datePickerDialog.show()
     }
 
+    // Метод для добавления студента в базу данных
+    private fun addStudentToDatabase() {
+        val name = binding.editTextName.text.toString()
+        val type = binding.editTextType.text.toString()
+        val price = binding.editTextPrice.text.toString().toDoubleOrNull() ?: 0.0
+        val isActive = binding.switchOn.isChecked
 
-    fun add() {
-        binding.btnAdd.setOnClickListener() {
-            var on = binding.switchOn.isChecked
-            var name = binding.editTextName.text.toString() ?: ""
-            var price = binding.editTextPrice.text.toString() ?: ""
-            var timeLesson = planning() ?: ""
-            var countLesson = binding.editCountLesson.text ?: ""
+        // Проверяем, выбрана ли дата и время
+        if (selectedDateTime == null) {
+            // Если дата и время не выбраны, вы можете показать сообщение об ошибке или просто вернуться
+            return
+        }
 
+        val student = Student(0, name, type, price, isActive, selectedDateTime!!)
 
-            var student: Student = Student(
-                id = 0,
-                on = on,
-                name = name,
-                price = price,
-                timeLessons = timeLesson,
-                countLessons = if(countLesson.isEmpty()){
-                    0
-                }else{
-                    Log.e("replase",countLesson.toString())
-                    countLesson.replace(Regex("[^\\d]"), "").toInt() ?: 0
-
-                     },
-
-                number = 1
-            )
-
-            lifecycleScope.launch(Dispatchers.IO) {
-                studentDao.insert(student)
-
-                withContext(Dispatchers.Main) {
-                    finish()
-                    var intent = Intent(applicationContext, StudentsActivity::class.java)
-                    startActivity(intent)
-
-                }
-            }
-
-
+        // Запускаем корутину для вставки студента в базу данных
+        CoroutineScope(Dispatchers.IO).launch {
+            studentDao.insert(student)
+            finish() // Закрываем активити после успешной вставки
         }
     }
 }
