@@ -45,6 +45,7 @@ class StatisticsActivity : AppCompatActivity() {
     }
 
 
+    //
     fun init() {
         lifecycleScope.launch(Dispatchers.IO) {
             listPassRoom = ArrayList(studentDao.getAllStudents())
